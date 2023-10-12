@@ -1,0 +1,31 @@
+﻿@model U2Actividad2.Models.ViewModels.IndexViewModel
+@{
+    Layout = "MainLayout";
+}
+<main class="main">
+
+    <section class="nav">
+        <h3>ABC de Razas</h3>
+        <nav>
+            <a href="~/">Todas</a>
+            @for (char c = 'A'; c <= 'Z'; c++)
+            {
+                 <a href="~/?Id=@c">@c</a>
+            }
+            <a href="~/Home/pais">Listado por país</a>
+        </nav>
+    </section>
+    <section class="list">
+        <ul>
+            @foreach(var raza in Model.raza)
+            {
+            <li>
+                <a href="~/Home/razaperro/@raza.Nombre">
+                    <img src="~/imgs_perros/@(raza.Id)_0.jpg">
+                   @(raza.Nombre)
+                </a>
+            </li>                         
+            }
+        </ul>
+    </section>
+</main>

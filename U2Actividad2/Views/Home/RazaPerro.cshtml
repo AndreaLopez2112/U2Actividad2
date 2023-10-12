@@ -1,0 +1,74 @@
+﻿@model U2Actividad2.Models.ViewModels.RazaPerroViewModel
+@{
+    Layout = "MainLayout";
+}
+<main class="main">
+    <h2 id="nombre">Afgano</h2>
+
+    <section class="descripcion" id="descripcion">
+       @Model.masacota.Descripcion
+    </section>
+
+    <section class="galeria">
+        <img id="fotoPerro" src="~/imgs_perros/@(Model.masacota.Id)_0.jpg" />
+    </section>
+
+    <section class="datos">
+        <h3>Datos</h3>
+        <label>Otros nombres: </label>
+        <span id="otrosNombre">@Model.masacota.OtrosNombres</span>
+        <br />
+        <label>País de Origen: </label>
+        <span id="pais">@(Model.masacota.IdPaisNavigation != null ? Model.masacota.IdPaisNavigation.Nombre : "sin pais")</span>
+        <br />
+        <label>Peso: </label>
+        <span id="peso">@Model.masacota.PesoMax @Model.masacota.PesoMin</span>
+        <br />
+        <label>Altura: </label>
+        <span id="altura">@Model.masacota.AlturaMin @Model.masacota.AlturaMax</span>
+        <br />
+        <label>Esperanza de Vida: </label>
+        <span id="vida">@Model.masacota.EsperanzaVida</span>
+        <br />
+    </section>
+    <section class="estadisticas">
+        <h3>Estadísticas</h3>
+        <label>Nivel de Energía:</label><img src="~/imgs/nivel@(Model.masacota.Estadisticasraza != null ? Model.masacota.Estadisticasraza.NivelEnergia : "").png" /><br />
+        <label>Facilidad de Entrenamiento:</label><img src="~/imgs/nivel@(Model.masacota.Estadisticasraza != null ? Model.masacota.Estadisticasraza.FacilidadEntrenamiento : "").png" /><br />
+        <label>Ejercicio Obligatorio:</label><img src="~/imgs/nivel@(Model.masacota.Estadisticasraza != null ? Model.masacota.Estadisticasraza.EjercicioObligatorio : "").png" /><br />
+        <label>Amistad con Desconocidos:</label><img src="~/imgs/nivel@(Model.masacota.Estadisticasraza != null ? Model.masacota.Estadisticasraza.AmistadDesconocidos : "").png" /><br />
+        <label>Amistad con Perros:</label><img src="~/imgs/nivel@(Model.masacota.Estadisticasraza != null ? Model.masacota.Estadisticasraza.AmistadPerros : "").png" /><br />
+        <label>Necesidad de Cepillado:</label><img src="~/imgs/nivel@(Model.masacota.Estadisticasraza != null ? Model.masacota.Estadisticasraza.NecesidadCepillado : "").png" />
+    </section>
+    <section class="fisicas">
+        <h3>Caracteristicas Físicas</h3>
+        <label>Patas: </label>
+        <span id="patas">@(Model.masacota.Caracteristicasfisicas != null ? Model.masacota.Caracteristicasfisicas.Patas : "" )</span>
+        <br />
+        <label>Cola: </label>
+        <span id="cola">@(Model.masacota.Caracteristicasfisicas != null ? Model.masacota.Caracteristicasfisicas.Cola : "")</span>
+        <br />
+        <label>Hocico: </label>
+        <span id="hocico">@(Model.masacota.Caracteristicasfisicas != null ? Model.masacota.Caracteristicasfisicas.Hocico : "")</span>
+        <br />
+        <label>Pelo: </label>
+        <span id="pelo">@(Model.masacota.Caracteristicasfisicas != null ? Model.masacota.Caracteristicasfisicas.Pelo : "")</span>
+        <br />
+        <label>Color: </label>
+        <span id="color">@(Model.masacota.Caracteristicasfisicas != null ? Model.masacota.Caracteristicasfisicas.Color : "")</span>
+    </section>
+    <br class="clear" />
+
+    <a href="javascript:history.back();" class="button">Regresar</a>
+
+    <section class="otrosPerros">
+        @foreach(var otrop in Model.otros)
+        {         
+           <a href="~/Home/raza">
+            <img src="~/imgs_perros/@(otrop.Id)_0.jpg" />
+            <h2>@(otrop.Nombre)</h2>
+           </a>
+        }
+        
+    </section>
+</main>
